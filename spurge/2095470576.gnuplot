@@ -1,6 +1,6 @@
 set datafile separator ","
 set terminal png size 800,500
-set title "Miller & Long"
+set title "Miller \\& Long"
 set yrange [0:]
 set xdata time
 set timefmt "%Y-%m-%d %H:%M:%S"

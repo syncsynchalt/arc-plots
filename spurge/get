@@ -3,6 +3,7 @@
 function getfile() {
     cid=$1
     ssh ulfheim.net grep -A50 diff.store.jobs spurge/* \| egrep '"[0-9](-\+|- ) *"'$cid | \
+        perl -pe 'm/(\d{8}-\d{4})/; if ($matches{$1}++) { $_ = "" }' | \
         perl -pe 's/.*_(\d{4})(\d\d)(\d\d)-(\d\d)(\d\d).*'$cid'[^\d]+(\d+).*/$1-$2-$3 $4:$5:00,$6/' > input/$cid.csv
 }
 
