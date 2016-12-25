@@ -1,0 +1,7 @@
+#!/bin/bash -ex
+
+ssh ulfheim.net cat spurge/'$(ls spurge/ | tail -n1)' | \
+	perl -ne 'print if ($print); if (/All export requests/) { $print = 1 }; if (/rows\)/) { $print = 0; }' | \
+	egrep ' (done|active|requested|stalled) ' | \
+	perl -pe 's!.* \| (\d\d)/(\d\d)/(\d\d) \d\d:\d\d .*!20$3-$1-$2!' | \
+	sort | uniq -c | perl -pe 's/^ +(\d+) (.*)/$2,$1/' > input/exp-requests.csv

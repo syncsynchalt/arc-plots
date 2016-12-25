@@ -1,0 +1,7 @@
+#!/bin/bash
+
+file=$1
+lines=$2
+
+head -n1 $file
+tail -n$lines $file | grep -v ^when

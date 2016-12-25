@@ -1,0 +1,13 @@
+#!/bin/bash -ex
+
+function getfile() {
+    store=$1
+    name=$2
+    ssh ulfheim.net Bin/storereport.pl $store < /dev/null > input/store-$name.csv
+}
+
+getfile BA-export ba
+getfile Englewood-0 ewl
+getfile Denver-0 lvs
+getfile /mxl/msg_export ewl-export
+getfile /mxl/msg_archive/deprov_export/switch lvs-export

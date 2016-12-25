@@ -1,0 +1,26 @@
+#!/bin/bash -ex
+
+let day=(24)
+let week=(7*24)
+let month=(30*24)
+
+files="ba ewl lvs ewl-export lvs-export"
+
+function size_files() {
+    label=$1
+    lines=$2
+    for i in $files; do
+        ./csvsize input/store-$i.csv $2 > input/store-$i-$label.csv
+    done
+}
+
+function gen() {
+    name=$1
+    lines=$2
+    gnuplot store-$name.gnuplot > output/store-$name.png
+}
+
+size_files week $week
+for i in $files; do
+    gen $i-week $week
+done

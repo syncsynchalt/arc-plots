@@ -1,0 +1,12 @@
+#!/bin/bash -ex
+
+function getfile() {
+    type=$1
+    ssh ulfheim.net grep -r $type: old-spurge/ spurge/ | \
+        perl -ne 's/.*_(\d{4})(\d\d)(\d\d)-(\d\d)(\d\d):.*: (\d+).*/$1-$2-$3 $4:$5:00,$6/ and print' | \
+        sort > input/$type.csv
+}
+
+for i in $(ls *-DUR.gnuplot | cut -f1 -d- | sort | uniq); do
+    getfile $i
+done

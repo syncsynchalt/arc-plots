@@ -1,0 +1,36 @@
+#!/bin/bash -ex
+
+let day=(24)
+let week=(7*24)
+let month=(30*24)
+let quarter=(90*24)
+let year=(365*24)
+
+files=$(ls *-DUR.gnuplot | cut -f1 -d- | sort | uniq)
+
+function size_files() {
+    label=$1
+    lines=$2
+    for i in $files; do
+        ./csvsize input/$i.csv $lines > input/$i-$label.csv
+    done
+}
+
+function gen() {
+    name=$1
+    dur=$2
+    sed -e "s/DUR/$dur/" < $name-DUR.gnuplot > /tmp/$$.gnuplot
+    gnuplot /tmp/$$.gnuplot > output/$name-$dur.png
+    rm /tmp/$$.gnuplot
+}
+
+#size_files week $week
+size_files month $month
+size_files quarter $year
+for i in $files; do
+    #gen $i week
+    gen $i month
+    gen $i quarter
+done
+
+gnuplot exp-requests.gnuplot > output/exp-requests.png

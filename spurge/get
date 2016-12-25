@@ -1,0 +1,11 @@
+#!/bin/bash -ex
+
+function getfile() {
+    cid=$1
+    ssh ulfheim.net grep -A50 diff.store.jobs spurge/* \| egrep '"[0-9](-\+|- ) *"'$cid | \
+        perl -pe 's/.*_(\d{4})(\d\d)(\d\d)-(\d\d)(\d\d).*'$cid'[^\d]+(\d+).*/$1-$2-$3 $4:$5:00,$6/' > input/$cid.csv
+}
+
+for i in $(ls *.gnuplot | cut -f1 -d. | sort | uniq); do
+    getfile $i
+done
