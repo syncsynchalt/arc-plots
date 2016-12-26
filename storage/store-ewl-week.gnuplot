@@ -1,5 +1,5 @@
 set datafile separator ","
-set terminal png size 800,500
+set terminal svg size 800,500
 set title "EWL Store (Englewood-0)"
 #set ylabel "used"
 #set xlabel "date"

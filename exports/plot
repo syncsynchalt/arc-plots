@@ -20,7 +20,10 @@ function gen() {
     name=$1
     dur=$2
     sed -e "s/DUR/$dur/" < $name-DUR.gnuplot > /tmp/$$.gnuplot
-    gnuplot /tmp/$$.gnuplot > output/$name-$dur.png
+    gnuplot /tmp/$$.gnuplot > output/$name-$dur.svg
+    /Applications/Inkscape.app/Contents/Resources/bin/inkscape \
+        --without-gui --export-png $(pwd)/output/$name-$dur.png \
+        --export-background white $(pwd)/output/$name-$dur.svg
     rm /tmp/$$.gnuplot
 }
 
@@ -33,4 +36,7 @@ for i in $files; do
     gen $i quarter
 done
 
-gnuplot exp-requests.gnuplot > output/exp-requests.png
+gnuplot exp-requests.gnuplot > output/exp-requests.svg
+/Applications/Inkscape.app/Contents/Resources/bin/inkscape \
+    --export-png $(pwd)/output/exp-requests.svg --export-background white \
+    -w 800 $(pwd)/output/exp-requests.svg

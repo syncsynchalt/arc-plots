@@ -17,7 +17,10 @@ function size_files() {
 function gen() {
     name=$1
     lines=$2
-    gnuplot store-$name.gnuplot > output/store-$name.png
+    gnuplot store-$name.gnuplot > output/store-$name.svg
+    /Applications/Inkscape.app/Contents/Resources/bin/inkscape \
+        --without-gui --export-png $(pwd)/output/store-$name.png \
+        --export-background white $(pwd)/output/store-$name.svg
 }
 
 size_files week $week
