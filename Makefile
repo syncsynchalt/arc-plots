@@ -1,4 +1,5 @@
-DIRS=exports spurge storage
+#DIRS=exports spurge storage
+DIRS=exports storage
 
 all:
 	for i in $(DIRS); do \
