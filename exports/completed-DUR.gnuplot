@@ -1,5 +1,4 @@
-set datafile separator ","
-set terminal svg size 800,500
+load "common.gnuplot.inc"
 set title "Completed"
 set xdata time
 set timefmt "%Y-%m-%d %H:%M:%S"

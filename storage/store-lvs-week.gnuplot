@@ -1,5 +1,4 @@
-set datafile separator ","
-set terminal svg size 800,500
+load "common.gnuplot.inc"
 set title "LVS Store (Denver-0)"
 #set ylabel "used"
 #set xlabel "date"

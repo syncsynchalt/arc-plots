@@ -1,5 +1,4 @@
-set datafile separator ","
-set terminal svg size 800,500
+load "common.gnuplot.inc"
 set title "BlueArc Export rsync"
 #set ylabel "used"
 #set xlabel "date"
