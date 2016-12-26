@@ -10,4 +10,6 @@ set boxwidth 86400 absolute
 set style fill solid
 set xtics out
 unset mxtics
-plot "input/exp-requests.csv" using 1:2 with boxes lt 6
+f(x)=a+b*((x-1456815600)/86400)+c*((x-1456815600)/86400)**2+d*((x-1456815600)/86400)**3
+fit f(x) "input/exp-requests.csv" using 1:2 via a,b,c,d
+plot "input/exp-requests.csv" using 1:2 with boxes lt 6, f(x)
