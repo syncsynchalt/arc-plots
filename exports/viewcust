@@ -1,12 +1,17 @@
 #!/bin/bash -ex
 
 cid=$1
-ssh ulfheim.net egrep -r -m1 "'^  *$1.*(MST|MDT)'" spurge/ | egrep -v 'done|requested|stalled|active' | \
+type=$2
+if [[ -z "$type" ]]; then type=lines; fi
+if [[ "$type" = "multi" ]]; then type='points ps 0.2'; fi
+
+ssh ulfheim.net egrep -r "'^  *$1.*(MST|MDT)'" spurge/ | egrep -v 'done|requested|stalled|active' | \
+    grep -v '.*|.*|.*|.*|' | \
     perl -ne 's/.*_(\d{4})(\d\d)(\d\d)-(\d\d)(\d\d):.*'$cid'[^\d]+([0-9.]+).*/$1-$2-$3 $4:$5:00,$6/ and print' | \
     sort > input/$cid-perc.csv
 
 
-cat cid.gnuplot.template | sed -e "s/CID/$cid/g" > /tmp/$$.gnuplot
+cat cid.gnuplot.template | sed -e "s/CID/$cid/g;s/TYPE/$type/g" > /tmp/$$.gnuplot
 gnuplot /tmp/$$.gnuplot > output/$cid-perc.svg
 open -a Safari output/$cid-perc.svg
 /Applications/Inkscape.app/Contents/Resources/bin/inkscape \

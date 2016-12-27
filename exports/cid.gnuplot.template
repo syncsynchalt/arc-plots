@@ -1,9 +1,9 @@
 load "common.gnuplot.inc"
-set title "Customer CID export"
+set title "Customer CID Export Progress"
 set xdata time
 set timefmt "%Y-%m-%d %H:%M:%S"
 set format x "%m/%d"
 set format y '%.0f'
 set key off
 set grid
-plot "input/CID-perc.csv" using 1:2 with lines lw 2 lt 2
+plot "input/CID-perc.csv" using 1:2 with TYPE lw 2 lt 2
