@@ -10,7 +10,7 @@ spurge:
 	$(MAKE) -C spurge all
 
 clean:
-	for i in $(DIRS); do \
+	for i in $(DIRS) spurge; do \
 		$(MAKE) -C $$i clean || exit 1; \
 	done
 

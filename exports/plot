@@ -38,5 +38,5 @@ done
 
 gnuplot exp-requests.gnuplot > output/exp-requests.svg
 /Applications/Inkscape.app/Contents/Resources/bin/inkscape \
-    --export-png $(pwd)/output/exp-requests.svg --export-background white \
-    -w 800 $(pwd)/output/exp-requests.svg
+    --without-gui --export-png $(pwd)/output/exp-requests.png \
+    --export-background white $(pwd)/output/exp-requests.svg
