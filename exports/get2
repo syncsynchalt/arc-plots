@@ -4,4 +4,12 @@ ssh ulfheim.net cat spurge/'$(ls spurge/ | tail -n1)' | \
 	perl -ne 'print if ($print); if (/All export requests/) { $print = 1 }; if (/rows\)/) { $print = 0; }' | \
 	egrep ' (done|active|requested|stalled) ' | \
 	perl -pe 's!.* \| (\d\d)/(\d\d)/(\d\d) \d\d:\d\d .*!20$3-$1-$2!' | \
-	sort | uniq -c | perl -pe 's/^ +(\d+) (.*)/$2,$1/' > input/exp-requests.csv
+	sort | uniq -c | perl -pe 's/^ +(\d+) (.*)/$2,$1/' > input/exp-requests-count.csv
+
+ssh ulfheim.net cat spurge/'$(ls spurge/ | tail -n1)' | \
+    perl -ne 'print if ($print); if (/All export requests/) { $print = 1 }; if (/rows\)/) { $print = 0; }' | \
+    egrep ' (done|active|requested|stalled) ' | \
+    perl -pe 's!.* (\d+) \| +\d+ \| (\d\d)/(\d\d)/(\d\d) \d\d:\d\d .*!20$4-$2-$3,$1!' | \
+    perl -e '
+        while (<>) { ($d,$s) = split /,/; $sums{$d} += $s }
+        for my $day (sort keys %sums) { print "$day,$sums{$day}\n" }' > input/exp-requests-seqs.csv

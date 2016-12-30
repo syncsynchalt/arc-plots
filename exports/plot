@@ -35,8 +35,3 @@ for i in $files; do
     gen $i month
     gen $i quarter
 done
-
-gnuplot exp-requests.gnuplot > output/exp-requests.svg
-/Applications/Inkscape.app/Contents/Resources/bin/inkscape \
-    --without-gui --export-png $(pwd)/output/exp-requests.png \
-    --export-background white $(pwd)/output/exp-requests.svg

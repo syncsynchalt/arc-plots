@@ -1,0 +1,16 @@
+#!/bin/bash -ex
+
+types="count seqs"
+
+function gen() {
+    type=$1
+    sed -e "s/TYPE/$type/" < exp-requests.gnuplot > /tmp/$$.gnuplot
+    gnuplot /tmp/$$.gnuplot > output/exp-requests-$type.svg
+    /Applications/Inkscape.app/Contents/Resources/bin/inkscape \
+        --without-gui --export-png $(pwd)/output/exp-requests-$type.png \
+        --export-background white $(pwd)/output/exp-requests-$type.svg
+    rm /tmp/$$.gnuplot
+}
+
+gen count
+gen seqs
