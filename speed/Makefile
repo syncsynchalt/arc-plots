@@ -1,8 +1,6 @@
 all:
 	./get
-	./get2
 	./plot
-	./plot2
 	./open
 
 clean:

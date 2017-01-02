@@ -1,5 +1,5 @@
-#DIRS=exports spurge storage custs
-DIRS=exports storage custs
+#DIRS=exports spurge storage custs speed
+DIRS=exports storage custs speed
 
 all:
 	for i in $(DIRS); do \

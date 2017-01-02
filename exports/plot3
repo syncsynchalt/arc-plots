@@ -1,6 +1,0 @@
-#!/bin/bash -ex
-
-gnuplot speed-averages.gnuplot > output/speed-averages.svg
-/Applications/Inkscape.app/Contents/Resources/bin/inkscape \
-    --without-gui --export-png $(pwd)/output/speed-averages.png \
-    --export-background white $(pwd)/output/speed-averages.svg

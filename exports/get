@@ -7,6 +7,6 @@ function getfile() {
         sort > input/$type.csv
 }
 
-for i in $(ls *-DUR.gnuplot | cut -f1 -d- | sort | uniq); do
+for i in completed requested; do
     getfile $i
 done

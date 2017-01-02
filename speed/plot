@@ -6,7 +6,7 @@ let month=(30*24)
 let quarter=(90*24)
 let year=(365*24)
 
-files="completed requested"
+files="avgspeed"
 
 function size_files() {
     label=$1
@@ -29,9 +29,7 @@ function gen() {
 
 size_files week $week
 size_files month $month
-size_files quarter $year
 for i in $files; do
     gen $i week
     gen $i month
-    gen $i quarter
 done
