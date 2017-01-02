@@ -1,0 +1,3 @@
+#!/bin/bash -ex
+
+ssh ulfheim.net Bin/speed-averages.pl > input/speed-averages.csv < /dev/null
