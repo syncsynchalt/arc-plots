@@ -4,7 +4,7 @@ let day=(24)
 let week=(7*24)
 let month=(30*24)
 
-files="ba ewl lvs ewl-export lvs-export"
+files="ba ewl lvs ewl-export ewl-na1-export ewl-na2-export lvs-export"
 
 function size_files() {
     label=$1

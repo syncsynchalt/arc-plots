@@ -1,7 +1,5 @@
 load "common.gnuplot.inc"
 set title "LVS Store (Denver-0)"
-#set ylabel "used"
-#set xlabel "date"
 set xdata time
 set timefmt "%Y-%m-%d %H:%M:%S"
 set format x "%m/%d"

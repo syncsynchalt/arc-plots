@@ -9,5 +9,7 @@ function getfile() {
 getfile BA-export ba
 getfile Englewood-0 ewl
 getfile Denver-0 lvs
+getfile ewl-na-export01 ewl-na1-export
+getfile ewl-na-export02 ewl-na2-export
 getfile /mxl/msg_export ewl-export
 getfile /mxl/msg_archive/deprov_export/switch lvs-export
