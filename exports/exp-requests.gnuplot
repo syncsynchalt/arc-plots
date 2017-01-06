@@ -8,7 +8,7 @@ set key off
 set boxwidth 86400 absolute
 set style fill solid
 set xtics out
-set yrange [0:*<100000000]
+set yrange [0:*<200000000]
 unset mxtics
 f(x)=a+b*((x-dday)/86400)+c*((x-dday)/86400)**2+d*((x-dday)/86400)**3
 dday=1456815600
