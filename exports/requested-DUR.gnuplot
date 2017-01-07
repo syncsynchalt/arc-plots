@@ -7,4 +7,5 @@ set format x "%m/%d"
 set format y '%.0f'
 set key off
 set grid
-plot "input/requested-DUR.csv" using 1:2 with lines lw 2 lt 7
+set style fill solid
+plot "input/requested-DUR.csv" using 1:2 with boxes lt rgb "#DC143C"
