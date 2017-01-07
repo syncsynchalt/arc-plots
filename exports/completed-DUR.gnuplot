@@ -1,5 +1,5 @@
 load "common.gnuplot.inc"
-set title "Completed"
+set title "Completed (DUR)"
 set xdata time
 set timefmt "%Y-%m-%d %H:%M:%S"
 set format x "%m/%d"

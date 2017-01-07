@@ -1,5 +1,5 @@
 load "common.gnuplot.inc"
-set title "Requested"
+set title "Requested (DUR)"
 set yrange [0:]
 set xdata time
 set timefmt "%Y-%m-%d %H:%M:%S"
