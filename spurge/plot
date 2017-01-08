@@ -17,7 +17,7 @@ function size_files() {
 function gen() {
     name=$1
     dur=$2
-    sed -e "s/DUR/$dur/" < $name.gnuplot > /tmp/$$.gnuplot
+    sed -e "s/DUR/$dur/g" < $name.gnuplot > /tmp/$$.gnuplot
     gnuplot /tmp/$$.gnuplot > output/$name-$dur.svg
     rm /tmp/$$.gnuplot
 }

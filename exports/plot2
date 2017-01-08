@@ -2,7 +2,7 @@
 
 function gen() {
     type=$1
-    sed -e "s/TYPE/$type/" < exp-requests.gnuplot > /tmp/$$.gnuplot
+    sed -e "s/TYPE/$type/g" < exp-requests.gnuplot > /tmp/$$.gnuplot
     gnuplot /tmp/$$.gnuplot > output/exp-requests-$type.svg
     rm /tmp/$$.gnuplot
 }

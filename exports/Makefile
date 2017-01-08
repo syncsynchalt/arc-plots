@@ -7,6 +7,7 @@ all:
 
 plot:
 	./plot
+	./plot2
 
 open:
 	./open
