@@ -1,7 +1,5 @@
 #!/bin/bash -ex
 
-types="count seqs"
-
 function gen() {
     type=$1
     sed -e "s/TYPE/$type/" < exp-requests.gnuplot > /tmp/$$.gnuplot
@@ -11,3 +9,5 @@ function gen() {
 
 gen count
 gen seqs
+
+gnuplot exp-done.gnuplot > output/exp-done.svg

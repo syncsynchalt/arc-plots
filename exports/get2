@@ -13,3 +13,7 @@ ssh ulfheim.net cat spurge/'$(ls spurge/ | tail -n1)' | \
     perl -e '
         while (<>) { ($d,$s) = split /,/; $sums{$d} += $s }
         for my $day (sort keys %sums) { print "$day,$sums{$day}\n" }' > input/exp-requests-seqs.csv
+
+ssh ulfheim.net for i in spurge/arc_report_\*\; do grep -H "' done '" \$i\; done \| awk '!x[\$2]++' | \
+    sed -e 's,.*arc_report_,,;s/-.*//' | uniq -c | tail -n +2 | \
+    perl -pe 's/ *(\d+) (\d{4})(\d\d)(\d\d)/$2-$3-$4,$1/' > input/exp-done.csv

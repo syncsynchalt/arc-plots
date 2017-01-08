@@ -27,3 +27,7 @@ function gen() {
 
 gen count
 gen seqs
+
+/Applications/Inkscape.app/Contents/Resources/bin/inkscape \
+    --without-gui --export-png $(pwd)/output/exp-done.png \
+    --export-background white $(pwd)/output/exp-done.svg
