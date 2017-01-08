@@ -21,9 +21,6 @@ function gen() {
     dur=$2
     sed -e "s/DUR/$dur/" < $name-DUR.gnuplot > /tmp/$$.gnuplot
     gnuplot /tmp/$$.gnuplot > output/$name-$dur.svg
-    /Applications/Inkscape.app/Contents/Resources/bin/inkscape \
-        --without-gui --export-png $(pwd)/output/$name-$dur.png \
-        --export-background white $(pwd)/output/$name-$dur.svg
     rm /tmp/$$.gnuplot
 }
 

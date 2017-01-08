@@ -1,2 +1,2 @@
 #!/bin/sh
-open output/*.png
+open -a Google\ Chrome output/*.svg

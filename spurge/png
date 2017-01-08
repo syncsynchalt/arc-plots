@@ -1,0 +1,15 @@
+#!/bin/bash -ex
+
+files=$(ls *.gnuplot | cut -f1 -d. | sort | uniq)
+
+function gen() {
+    name=$1
+    dur=$2
+    /Applications/Inkscape.app/Contents/Resources/bin/inkscape \
+        --without-gui --export-png=$(pwd)/output/$name-$dur.png \
+        --export-background=white $(pwd)/output/$name-$dur.svg
+}
+
+for i in $files; do
+    gen $i month
+done

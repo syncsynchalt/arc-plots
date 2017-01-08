@@ -19,15 +19,10 @@ function gen() {
     dur=$2
     sed -e "s/DUR/$dur/" < $name.gnuplot > /tmp/$$.gnuplot
     gnuplot /tmp/$$.gnuplot > output/$name-$dur.svg
-    /Applications/Inkscape.app/Contents/Resources/bin/inkscape \
-        --without-gui --export-png=$(pwd)/output/$name-$dur.png \
-        --export-background=white $(pwd)/output/$name-$dur.svg
     rm /tmp/$$.gnuplot
 }
 
-#size_files week $week
 size_files month $month
 for i in $files; do
-    #gen $i week
     gen $i month
 done

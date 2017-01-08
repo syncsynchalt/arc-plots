@@ -1,9 +1,11 @@
 #DIRS=exports spurge storage custs speed
 DIRS=exports storage custs speed
 
-all:
+catchall: all
+
+all png:
 	for i in $(DIRS); do \
-		$(MAKE) -C $$i all || exit 1; \
+		$(MAKE) -C $$i $(MAKECMDGOALS) || exit 1; \
 	done
 
 spurge:
@@ -14,4 +16,4 @@ clean:
 		$(MAKE) -C $$i clean || exit 1; \
 	done
 
-.PHONY: all spurge clean
+.PHONY: all spurge clean png
