@@ -25,10 +25,8 @@ function gen() {
 }
 
 size_files week $week
-size_files month $month
 size_files quarter $year
 for i in $files; do
     gen $i week
-    gen $i month
     gen $i quarter
 done
